@@ -1,0 +1,100 @@
+#first add to the git
+git add 1.py
+
+#then commit
+git commit -m "message"
+
+#have a change to 1.py
+git add 1.py
+git commit -m "message"
+
+#commit a change to HEAD{0} without creatint a new log
+git commit --amend --no-edit
+
+
+#want to roll back
+git reset --hard HEAD^
+git reset --hard HEAD~3
+git reset --hard 666acdb0
+
+
+
+#just roll back one particular file
+git checkout 66acdb0 -- 1.py
+
+#check git log
+git log --oneline
+git reflog
+git status -s
+
+# create new branch
+git branch new_branch_name
+git checkout new_branch_name
+git branch -d branch_name
+git checkout -b new_branch_name
+
+
+
+#merge branch to master
+git checkout master
+git merge --no-ff -m "merge info" diva
+
+
+#check the branch graph
+$ git log --oneline --graph
+*   2d9d298 merge info
+|\
+| * 8054430 am change
+| * 0d4e6d8 diva change
+|/
+* 3c07e8f checkout change
+* ba3c5db change two
+* 281d494 5th change
+* 28bbb89 4th change
+* 7e79c93 change one
+* 6661ab0 1.py
+
+#conflict
+target: 1.py 
+master1----master2--merge
+		|--branch: diva--|
+		
+
+$ git merge diva
+Auto-merging 1.py
+CONFLICT (content): Merge conflict in 1.py
+Automatic merge failed; fix conflicts and then commit the result.
+
+merge will cause a conflict, at this time, we need to edit the 1.py by hand
+and then, add and commit it in master, that's it. We don't need to merge again.
+
+
+
+#rebase合并
+master: A--B--C------*
+	branch:|---D--E-|
+	 
+master>>git rebase branch
+
+master: A--B--D--E--C--*
+会将目标线的分裂后的内容放在C之前，需修改冲突
+
+
+#stash
+git stash缓存当前工作状态
+git stash pop
+
+#github
+在git中输入两条命令，第一条把本地文件链接过去
+第二条把本地库push上去
+
+
+
+
+
+
+
+
+
+
+
