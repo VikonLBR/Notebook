@@ -87,7 +87,8 @@ git stash pop
 #github
 在git中输入两条命令，第一条把本地文件链接过去
 第二条把本地库push上去
-
+git remote add origin https://github.com/VikonLBR/test.git
+git push -u origin master
 
 
 
